@@ -64,5 +64,7 @@ namespace AutoSphereApp
         {
             Manager.MainFrame = MainFrame;
         }
+
+        
     }
 }

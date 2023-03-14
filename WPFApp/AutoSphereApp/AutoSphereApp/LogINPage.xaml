@@ -9,6 +9,28 @@
       Title="LogINPage">
 
     <Grid>
-        <Button Content="Login page"></Button>
+        <StackPanel   Width="300">
+            <Image Source="Resources\loginImage.png" Height="150" Width="234" Margin="35" ></Image>
+            <Label FontSize="20" Content="Авторизация" HorizontalAlignment="Center" FontFamily="Impact"></Label>
+            <Label HorizontalAlignment="Center" Content="Логин:" FontFamily="Impact"></Label>
+            <TextBox Name="LoginTB" HorizontalAlignment="Center" Width="200" ></TextBox>
+            <Label FontFamily="Impact" Content="Пароль" HorizontalAlignment="Center" ></Label>
+            <TextBox Name="TxbPassword" Width="200" Visibility="Collapsed" ></TextBox>
+
+            <PasswordBox Width="200" Name="Password"></PasswordBox>
+            <CheckBox Name="CheckBoxPass" FontFamily="Impact" Unchecked="CheckBox_UnChecked" HorizontalAlignment="Center" Content="Показать пароль" Margin="5" Checked="CheckBox_Checked"></CheckBox>
+            <Canvas   Name="Noises" Visibility="Collapsed"></Canvas>
+            <StackPanel Visibility="Collapsed" Width="200" Height="150" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Name="SymbolsGen">
+
+
+            </StackPanel>
+            <TextBox Width="200" Name="GetCapcha" Visibility="Collapsed"></TextBox>
+            <Button Name="UpdateCapcha" Visibility="Collapsed" Content="Обновить капчу" Width="200 " Margin="5" Click="Button_Click_1"></Button>
+            <Button Name="ConfirmCapcha" Width="200" Height="20" Margin="5" Content="Подтвердить капчу" Visibility="Collapsed" ></Button>
+            <Button FontFamily="Impact" Content="Войти" Width="200" Click="Button_Click" ></Button>
+
+        </StackPanel>
+
     </Grid>
+
 </Page>
