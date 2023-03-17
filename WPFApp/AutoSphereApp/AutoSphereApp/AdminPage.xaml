@@ -9,6 +9,56 @@
       Title="AdminPage">
 
     <Grid>
-        <Button Content="123123123123" Click="Button_Click"></Button>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Row="1">
+            <Button Background="AntiqueWhite" Content="Клиенты" FontFamily="Impact" Margin="5" Click="Button_Click_2"></Button>
+            <Button  Background="AntiqueWhite" Content="Заказы" FontFamily="Impact" Margin="5"></Button>
+            <Button  Background="AntiqueWhite" Content="Машины" FontFamily="Impact" Margin="5" Click="Button_Click_3"></Button>
+            <Button  Background="AntiqueWhite" Content="История входа" FontFamily="Impact" Margin="5"></Button>
+            <Button  Background="AntiqueWhite" Content="Сотрудники" FontFamily="Impact" Margin="5"></Button>
+
+        </StackPanel>
+
+        <StackPanel  Grid.Row="2" Orientation="Horizontal" Margin="0 0 0 25" Grid.RowSpan="2">
+            <Button Margin="3" Width="20"  Name="BtnFirstPage" Click="BtnFirstPage_Click" Content="&lt;&lt;" FontFamily="Impact"  Background="AntiqueWhite" />
+            <Button Margin="3" Width="20" Name="BtnPreviousPage" Click="BtnPreviousPage_Click" Content="&lt;" FontFamily="Impact" Background="AntiqueWhite"/>
+            <Label Name="LblPages" VerticalAlignment="Center" FontSize="16"  FontFamily="Impact" Height="28" >2/5</Label>
+
+            <Button Margin="3" Width="20" Name="BtnNextPage" Click="BtnNextPage_Click" Content="&gt;" FontFamily="Impact" Background="AntiqueWhite"/>
+            <Button  Margin="3" Width="20" Name="BtnLastPage" Click="BtnLastPage_Click" Content="&gt;&gt;" FontFamily="Impact" Background="AntiqueWhite"/>
+            <Button Content="123123" Margin="3" Click="Button_Click_1" ></Button>
+
+        </StackPanel>
+      
+        <DataGrid Visibility="Collapsed" IsReadOnly="True" AutoGenerateColumns="False" Name="ClientsList">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Номер клиента" Binding="{Binding ClientID}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Имя" Binding="{Binding FirstName }"></DataGridTextColumn>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding MiddleName}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Отчество" Binding="{Binding LastName}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Номер телефона" Binding="{Binding PhoneNumber}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Почта" Binding="{Binding Email}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Серия и номер паспорта" Binding="{Binding PassNumber}" Width="*"></DataGridTextColumn>
+                
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid Visibility="Collapsed" IsReadOnly="True" AutoGenerateColumns="False" Name="CarsList">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Номер машины" Binding="{Binding CarID}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Марка" Binding="{Binding Mark}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Модель" Binding="{Binding Model}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Цвет" Binding="{Binding Color}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Тип кузова" Binding="{Binding Type}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Год выпуска" Binding="{Binding Year}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Номер страны" Binding="{Binding CountryID}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Цена" Binding="{Binding Cost}"></DataGridTextColumn>
+                <DataGridTextColumn Header="VIN номер" Binding="{Binding VIN}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
     </Grid>
 </Page>

@@ -9,6 +9,8 @@
       Title="RegPage">
 
     <Grid>
-        <Button Content="123123" Click="Button_Click"></Button>
+        <StackPanel Width="300" >
+            <Label Content="Регистрация в системе"></Label>
+        </StackPanel>
     </Grid>
 </Page>

@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace AutoSphereApp
 {
     /// <summary>
@@ -25,9 +26,10 @@ namespace AutoSphereApp
         public MainWindow()
         {
             InitializeComponent();
-            MainFrame.Navigate(new LogINPage());
+            MainFrame.Navigate(new CarsView());
             Manager.MainFrame = MainFrame;
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+              
            
         }
 
@@ -65,6 +67,9 @@ namespace AutoSphereApp
             Manager.MainFrame = MainFrame;
         }
 
-        
+        private void MainFrame_Navigated(object sender, NavigationEventArgs e)
+        {
+
+        }
     }
 }

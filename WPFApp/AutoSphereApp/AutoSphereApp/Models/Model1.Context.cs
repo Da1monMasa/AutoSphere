@@ -15,6 +15,7 @@ namespace AutoSphereApp.Models
     
     public partial class AutoSphereEntities : DbContext
     {
+        private static AutoSphereEntities _context;
         public AutoSphereEntities()
             : base("name=AutoSphereEntities")
         {
@@ -23,6 +24,12 @@ namespace AutoSphereApp.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
+        }
+        public static AutoSphereEntities GetContext()
+        {
+            if(_context== null)
+                _context = new AutoSphereEntities();
+            return _context;
         }
     
         public virtual DbSet<Cars> Cars { get; set; }

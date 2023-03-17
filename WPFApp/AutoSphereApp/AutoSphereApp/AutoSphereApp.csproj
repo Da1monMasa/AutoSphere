@@ -68,6 +68,9 @@
     <Compile Include="AdminPage.xaml.cs">
       <DependentUpon>AdminPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CarsView.xaml.cs">
+      <DependentUpon>CarsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Classes\DbConnect.cs" />
     <Compile Include="Classes\Manager.cs" />
     <Compile Include="ClientPage.xaml.cs">
@@ -140,6 +143,10 @@
       <DependentUpon>RegPage.xaml</DependentUpon>
     </Compile>
     <Page Include="AdminPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CarsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

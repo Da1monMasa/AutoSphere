@@ -31,3 +31,5 @@ C:\Users\daimo\source\repos\AutoSphereApp\AutoSphereApp\obj\Debug\AutoSphereApp_
 C:\Users\daimo\source\repos\AutoSphereApp\AutoSphereApp\obj\Debug\AutoSphereApp.csproj.CopyComplete
 C:\Users\daimo\source\repos\AutoSphereApp\AutoSphereApp\obj\Debug\ManagerPage.g.cs
 C:\Users\daimo\source\repos\AutoSphereApp\AutoSphereApp\obj\Debug\ManagerPage.baml
+C:\Users\daimo\source\repos\AutoSphereApp\AutoSphereApp\obj\Debug\CarsView.g.cs
+C:\Users\daimo\source\repos\AutoSphereApp\AutoSphereApp\obj\Debug\CarsView.baml

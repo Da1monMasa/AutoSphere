@@ -6,16 +6,16 @@
         xmlns:local="clr-namespace:AutoSphereApp"
         mc:Ignorable="d"
         Title="MainWindow" Height="800" Width="1200">
-    <Grid>
+    <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="75" x:Name="Head"></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="*"  ></RowDefinition>
         </Grid.RowDefinitions>
-        <Frame ContentRendered="MainFrame_ContentRendered"  NavigationUIVisibility="Hidden" Name="MainFrame" Grid.Row="1">
+        <Frame ContentRendered="MainFrame_ContentRendered"  NavigationUIVisibility="Hidden" Name="MainFrame" Grid.Row="1" Navigated="MainFrame_Navigated">
 
         </Frame>
 
-        <Grid Background="WhiteSmoke">
+        <Grid Background="AntiqueWhite">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="270"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
@@ -38,13 +38,20 @@
             </StackPanel>
 
             <StackPanel Grid.Column="3">
-                <Label  Grid.Column="3" VerticalAlignment="Top" Width="NaN" HorizontalAlignment="Center" Content="Номер телефона для связи: +7-985-803-91-45" FontFamily="Impact" Height="25"/>
-                <Button Name="BackButton" Width="200" Content="Назад" Height="20" Click="BackButton_Click" ></Button>
-                <Button Name ="RegistrationButton" Width="200" Content="Регистрация" Height="20" Click="RegistrationButton_Click" Margin="5" ></Button>
+                <Label  Grid.Column="3" VerticalAlignment="Top" Width="NaN" HorizontalAlignment="Center" Content="Номер телефона для связи: +7-985-803-91-45" FontFamily="Times New Roman" Height="25" FontWeight="Bold"/>
+                <Button FontWeight="Bold" FontFamily="Times New Roman" Name="BackButton"  Background="AntiqueWhite" Width="200" Content="Назад" Height="20" Click="BackButton_Click" ></Button>
+                <Button FontWeight="Bold" FontFamily="Times New Roman" Background="AntiqueWhite" Name ="RegistrationButton" Width="200" Content="Регистрация" Height="20" Click="RegistrationButton_Click" Margin="5" ></Button>
             </StackPanel>
         </Grid>
-        
-
+        <DockPanel Grid.Row="1" VerticalAlignment="Bottom" Background="AntiqueWhite">
+            <StatusBar DockPanel.Dock="Bottom">
+                <TextBlock Text="Copyright © 2023 ООО Авто-Сфера" />
+               
+            </StatusBar>
+            <Grid>
+                <!-- Основное содержимое окна -->
+            </Grid>
+        </DockPanel>
 
 
 
