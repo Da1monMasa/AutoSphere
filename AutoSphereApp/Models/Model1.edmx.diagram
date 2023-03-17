@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3f7aa51915ba409e99503ab227bc6eb7" Name="Diagram1">
+        <EntityTypeShape EntityType="AutoSphereModel.Cars" Width="1.5" PointX="3" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoSphereModel.Clients" Width="1.5" PointX="3" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoSphereModel.Countrys" Width="1.5" PointX="5.25" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoSphereModel.Drives" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoSphereModel.EnterHistory" Width="1.5" PointX="5.25" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoSphereModel.Marks" Width="1.5" PointX="7.5" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoSphereModel.Orders" Width="1.5" PointX="5.25" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoSphereModel.QR_Codes" Width="1.5" PointX="7.5" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoSphereModel.Roles" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoSphereModel.Services" Width="1.5" PointX="3" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoSphereModel.Staff" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoSphereModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoSphereModel.Users" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoSphereModel.Zones" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="AutoSphereModel.FK_Cars_Drives" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoSphereModel.FK_Countrys_Cars" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoSphereModel.FK_Orders_Cars" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoSphereModel.FK_Orders_Clients" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoSphereModel.FK_Marks_Countrys" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoSphereModel.FK_EnterHistory_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoSphereModel.FK_Orders_Services" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoSphereModel.FK_Orders_Staff" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoSphereModel.FK_QR_Codes_Orders" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoSphereModel.FK_Staff_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoSphereModel.FK_Users_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoSphereModel.FK_Staff_Zones" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

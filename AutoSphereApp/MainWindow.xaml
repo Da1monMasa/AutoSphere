@@ -1,0 +1,59 @@
+﻿<Window x:Class="AutoSphereApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AutoSphereApp"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="800" Width="1200">
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75" x:Name="Head"></RowDefinition>
+            <RowDefinition Height="*"  ></RowDefinition>
+        </Grid.RowDefinitions>
+        <Frame ContentRendered="MainFrame_ContentRendered"  NavigationUIVisibility="Hidden" Name="MainFrame" Grid.Row="1" Navigated="MainFrame_Navigated">
+
+        </Frame>
+
+        <Grid Background="AntiqueWhite">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="270"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+
+
+            </Grid.ColumnDefinitions>
+
+
+
+            <Button Name="QuitButton" Visibility="Collapsed" Content="Выход" Grid.Column="1" Click="Button_Click"></Button>
+            <Image HorizontalAlignment="Left" Source="\Resources\AutosphereLogotip.png"  Width="150" RenderTransformOrigin="0.548,-0.008" Margin="0,0,0,-7"/>
+
+            <StackPanel Height="Auto" HorizontalAlignment="Right" Grid.Column="0">
+                
+                <Image Source="Resources\guaranty.png" HorizontalAlignment="Center" Height="37" Width="60" Stretch="Fill"></Image>
+                <TextBlock HorizontalAlignment="Center"   Grid.Row="1" TextWrapping="Wrap" Text="15 лет" VerticalAlignment="Top" FontFamily="Impact"/>
+                <TextBlock HorizontalAlignment="Left"  Grid.Row="1" TextWrapping="Wrap" Text="Безупречной работы" VerticalAlignment="Top" FontFamily="Impact"/>
+
+            </StackPanel>
+
+            <StackPanel Grid.Column="3">
+                <Label  Grid.Column="3" VerticalAlignment="Top" Width="NaN" HorizontalAlignment="Center" Content="Номер телефона для связи: +7-985-803-91-45" FontFamily="Times New Roman" Height="25" FontWeight="Bold"/>
+                <Button FontWeight="Bold" FontFamily="Times New Roman" Name="BackButton"  Background="AntiqueWhite" Width="200" Content="Назад" Height="20" Click="BackButton_Click" ></Button>
+                <Button FontWeight="Bold" FontFamily="Times New Roman" Background="AntiqueWhite" Name ="RegistrationButton" Width="200" Content="Регистрация" Height="20" Click="RegistrationButton_Click" Margin="5" ></Button>
+            </StackPanel>
+        </Grid>
+        <DockPanel Grid.Row="1" VerticalAlignment="Bottom" Background="AntiqueWhite">
+            <StatusBar DockPanel.Dock="Bottom">
+                <TextBlock Text="Copyright © 2023 ООО Авто-Сфера" />
+               
+            </StatusBar>
+            <Grid>
+                <!-- Основное содержимое окна -->
+            </Grid>
+        </DockPanel>
+
+
+
+    </Grid>
+</Window>
