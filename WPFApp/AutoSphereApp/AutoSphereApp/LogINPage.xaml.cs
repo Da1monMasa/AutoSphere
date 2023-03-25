@@ -70,6 +70,7 @@ namespace AutoSphereApp
             try
             {
                 var userObj = Classes.DbConnect.modeldb.Users.FirstOrDefault(x=> x.Login == LoginTB.Text && x.Password == Password.Password);
+                
 
                 if (userObj != null)
                 {
@@ -85,7 +86,29 @@ namespace AutoSphereApp
                             Manager.MainFrame.Navigate(new ManagerPage());
                             break;
                         case 3:
-                            Manager.MainFrame.Navigate(new ClientPage());
+                            var clientdata = Classes.DbConnect.modeldb.Clients.FirstOrDefault(c => c.ClientID == userObj.ClientID);
+                            if (clientdata != null)
+                            {
+                                
+                                User user = new User
+                                {
+                                    FirstName = clientdata.FirstName,
+                                    MiddleName = clientdata.MiddleName,
+                                    LastName = clientdata.LastName,
+                                    Email = clientdata.Email,
+                                    PhoneNumber = clientdata.PhoneNumber,
+                                    PassNumber = clientdata.PassNumber,
+                                    ClientID = clientdata.ClientID
+
+                                };
+                                Manager.MainFrame.Navigate(new ClientPage(user));
+                            }
+                            else
+                            {
+                                MessageBox.Show("Данные клиента не найдены!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
+                            }
+                            
+                           
                             break;
 
                         default:

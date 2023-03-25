@@ -12,7 +12,7 @@ namespace AutoSphereApp.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+
     public partial class AutoSphereEntities : DbContext
     {
         private static AutoSphereEntities _context;
@@ -20,18 +20,18 @@ namespace AutoSphereApp.Models
             : base("name=AutoSphereEntities")
         {
         }
-    
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
         public static AutoSphereEntities GetContext()
         {
-            if(_context== null)
+            if (_context == null)
                 _context = new AutoSphereEntities();
             return _context;
         }
-    
+
         public virtual DbSet<Cars> Cars { get; set; }
         public virtual DbSet<Clients> Clients { get; set; }
         public virtual DbSet<Countrys> Countrys { get; set; }
@@ -46,6 +46,8 @@ namespace AutoSphereApp.Models
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<Zones> Zones { get; set; }
+        public virtual DbSet<TestDrive> TestDrives { get; set; }
+        public virtual DbSet<Dates> Dates { get; set; }
         public static Users currentuser = null;
     }
 }

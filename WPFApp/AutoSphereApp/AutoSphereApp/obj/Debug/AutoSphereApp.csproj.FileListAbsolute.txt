@@ -33,3 +33,14 @@ C:\Users\daimo\source\repos\AutoSphereApp\AutoSphereApp\obj\Debug\ManagerPage.g.
 C:\Users\daimo\source\repos\AutoSphereApp\AutoSphereApp\obj\Debug\ManagerPage.baml
 C:\Users\daimo\source\repos\AutoSphereApp\AutoSphereApp\obj\Debug\CarsView.g.cs
 C:\Users\daimo\source\repos\AutoSphereApp\AutoSphereApp\obj\Debug\CarsView.baml
+C:\Users\daimo\source\repos\AutoSphereApp\AutoSphereApp\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
+C:\Users\daimo\source\repos\AutoSphereApp\AutoSphereApp\obj\Debug\ClientsPage.g.cs
+C:\Users\daimo\source\repos\AutoSphereApp\AutoSphereApp\obj\Debug\EnterHistoryPage.g.cs
+C:\Users\daimo\source\repos\AutoSphereApp\AutoSphereApp\obj\Debug\OrdersPage.g.cs
+C:\Users\daimo\source\repos\AutoSphereApp\AutoSphereApp\obj\Debug\TestDrives.g.cs
+C:\Users\daimo\source\repos\AutoSphereApp\AutoSphereApp\obj\Debug\ClientsPage.baml
+C:\Users\daimo\source\repos\AutoSphereApp\AutoSphereApp\obj\Debug\EnterHistoryPage.baml
+C:\Users\daimo\source\repos\AutoSphereApp\AutoSphereApp\obj\Debug\OrdersPage.baml
+C:\Users\daimo\source\repos\AutoSphereApp\AutoSphereApp\obj\Debug\TestDrives.baml
+C:\Users\daimo\source\repos\AutoSphereApp\AutoSphereApp\obj\Debug\AddOrEditPage.g.cs
+C:\Users\daimo\source\repos\AutoSphereApp\AutoSphereApp\obj\Debug\AddOrEditPage.baml

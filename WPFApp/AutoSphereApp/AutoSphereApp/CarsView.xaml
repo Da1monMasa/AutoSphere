@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AutoSphereApp"
       mc:Ignorable="d" 
-      d:DesignHeight="800" d:DesignWidth="1200"
+      d:DesignHeight="800" d:DesignWidth="1400"
       Title="CarsView">
 
     <Grid>
@@ -18,15 +18,19 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="100"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        
+
         <StackPanel Orientation="Horizontal" Grid.Column="1">
             <Label Content="Поиск машины" Height="25" FontFamily="Times New Roman" VerticalAlignment="Center"></Label>
             <TextBox Name="SearchList" Width="200" Height="25" TextChanged="SearchList_TextChanged"></TextBox>
-            <CheckBox Name="ActualCars" Content="В наличии" Unchecked="ActualCars_Unchecked" Height="25" Width="83" VerticalContentAlignment="Center" Margin="5" FontFamily="Times New Roman"></CheckBox>
+            <CheckBox Name="ActualCars" Content="В наличии" Cursor="Hand" Unchecked="ActualCars_Unchecked" Height="25" Width="83" VerticalContentAlignment="Center" Margin="5" FontFamily="Times New Roman" Checked="ActualCars_Checked"></CheckBox>
+            <CheckBox Name="PodZakaz" Content="Под заказ" Cursor="Hand" Unchecked="PodZakaz_Unchecked" Height="25" Width="83" VerticalContentAlignment="Center" Margin="5" FontFamily="Times New Roman" Checked="PodZakaz_Checked"></CheckBox>
             <Label Content="Выберите модель" Height="25" FontFamily="Times New Roman"></Label>
             <ComboBox Name="MarksList" Width="200" Height="25" FontFamily="Times New Roman" Cursor="Hand" Margin="5" SelectionChanged="MarksList_SelectionChanged"></ComboBox>
-           
-            
+            <Button Name="ResetFilters" Height="24" Width="126" Content="Сбросить фильтры" Click="ResetFilters_Click" Cursor="Hand" ></Button>
+            <Button Content="Сформировать список автомобилей" Width="250" Margin="5" Height="25" Click="Button_Click"></Button>
+
+
+
 
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="0">
@@ -74,6 +78,7 @@
                             <TextBlock Text = "{Binding Model}" Grid.Row = "3" FontSize = "14" HorizontalAlignment = "Right" ></TextBlock >
                             <TextBlock Text = "{Binding Cost}" Grid.Row = "3" FontSize = "14" HorizontalAlignment = "Left" ></TextBlock >
                             <TextBlock Text="Описание:" Grid.Column="2" Grid.Row="0" VerticalAlignment="Top"></TextBlock>
+                            <TextBlock Text="{Binding Actuality}" Grid.Row="3" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center"></TextBlock>
                             <TextBlock Text="adgasdgsdfadgasdgsdfadgasdgsdfadgasdfadgasdgsdfadgfadgasdgsdfadgasdgsdfadgasdgsdfadsdgsdfadgasdgsdfadgasdgsdasdgsdfadgasdgsdfadsdgsdfadgasdgsdfadgasdgsddfggsdgsdgsdgsdgsdgfadgasdgsdfadgasdgsdfadgasdgsdfadgasdgsdfadgasdgsdf" Grid.Row="1" Width="300" Height="1000" Grid.Column="2"  TextWrapping="Wrap"></TextBlock>
 
                         </Grid >
@@ -81,9 +86,9 @@
                 </ListView.ItemTemplate>
             </ListView>
         </WrapPanel>
-        
-      
-        
-       
+
+
+
+
     </Grid>
 </Page>

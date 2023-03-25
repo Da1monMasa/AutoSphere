@@ -18,6 +18,7 @@ namespace AutoSphereApp.Models
         public Cars()
         {
             this.Orders = new HashSet<Orders>();
+            this.TestDrive = new HashSet<TestDrive>();
         }
     
         public int CarID { get; set; }
@@ -30,10 +31,13 @@ namespace AutoSphereApp.Models
         public Nullable<decimal> Cost { get; set; }
         public string VIN { get; set; }
         public Nullable<int> DriveID { get; set; }
+        public string Actuality { get; set; }
     
         public virtual Drives Drives { get; set; }
         public virtual Countrys Countrys { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Orders> Orders { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TestDrive> TestDrive { get; set; }
     }
 }

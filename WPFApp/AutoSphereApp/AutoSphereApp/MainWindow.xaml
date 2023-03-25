@@ -29,7 +29,7 @@
             <Button Name="QuitButton" Visibility="Collapsed" Content="Выход" Grid.Column="1" Click="Button_Click"></Button>
             <Image HorizontalAlignment="Left" Source="\Resources\AutosphereLogotip.png"  Width="150" RenderTransformOrigin="0.548,-0.008" Margin="0,0,0,-7"/>
 
-            <StackPanel Height="Auto" HorizontalAlignment="Right" Grid.Column="0">
+            <StackPanel Height="auto" HorizontalAlignment="Right" Grid.Column="0">
                 
                 <Image Source="Resources\guaranty.png" HorizontalAlignment="Center" Height="37" Width="60" Stretch="Fill"></Image>
                 <TextBlock HorizontalAlignment="Center"   Grid.Row="1" TextWrapping="Wrap" Text="15 лет" VerticalAlignment="Top" FontFamily="Impact"/>

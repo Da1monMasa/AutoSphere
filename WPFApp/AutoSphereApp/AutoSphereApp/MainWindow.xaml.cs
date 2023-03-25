@@ -26,7 +26,8 @@ namespace AutoSphereApp
         public MainWindow()
         {
             InitializeComponent();
-            MainFrame.Navigate(new CarsView());
+            MainFrame.Navigate(new LogINPage());
+            //(new LogINPage());
             Manager.MainFrame = MainFrame;
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
               

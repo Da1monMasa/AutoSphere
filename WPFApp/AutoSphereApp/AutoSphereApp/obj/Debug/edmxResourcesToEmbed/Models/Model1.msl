@@ -4,6 +4,7 @@
     <EntitySetMapping Name="Cars">
       <EntityTypeMapping TypeName="AutoSphereModel.Cars">
         <MappingFragment StoreEntitySet="Cars">
+          <ScalarProperty Name="Actuality" ColumnName="Actuality" />
           <ScalarProperty Name="CarID" ColumnName="CarID" />
           <ScalarProperty Name="Mark" ColumnName="Mark" />
           <ScalarProperty Name="Model" ColumnName="Model" />
@@ -133,6 +134,7 @@
     <EntitySetMapping Name="Users">
       <EntityTypeMapping TypeName="AutoSphereModel.Users">
         <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
           <ScalarProperty Name="UserID" ColumnName="UserID" />
           <ScalarProperty Name="Login" ColumnName="Login" />
           <ScalarProperty Name="Password" ColumnName="Password" />
@@ -145,6 +147,25 @@
         <MappingFragment StoreEntitySet="Zones">
           <ScalarProperty Name="ZoneID" ColumnName="ZoneID" />
           <ScalarProperty Name="ZoneName" ColumnName="ZoneName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TestDrive">
+      <EntityTypeMapping TypeName="AutoSphereModel.TestDrive">
+        <MappingFragment StoreEntitySet="TestDrive">
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="CarID" ColumnName="CarID" />
+          <ScalarProperty Name="TestDriveID" ColumnName="TestDriveID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dates">
+      <EntityTypeMapping TypeName="AutoSphereModel.Dates">
+        <MappingFragment StoreEntitySet="Dates">
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="DateID" ColumnName="DateID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -15,12 +15,21 @@
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Grid.Row="1">
-            <Button Background="AntiqueWhite" Content="Клиенты" FontFamily="Impact" Margin="5" Click="Button_Click_2"></Button>
-            <Button  Background="AntiqueWhite" Content="Заказы" FontFamily="Impact" Margin="5"></Button>
-            <Button  Background="AntiqueWhite" Content="Машины" FontFamily="Impact" Margin="5" Click="Button_Click_3"></Button>
-            <Button  Background="AntiqueWhite" Content="История входа" FontFamily="Impact" Margin="5"></Button>
-            <Button  Background="AntiqueWhite" Content="Сотрудники" FontFamily="Impact" Margin="5"></Button>
-
+            <Button Background="AntiqueWhite" Content="Клиенты" FontFamily="Times New Roman" Margin="5" Click="Button_Click_2"></Button>
+            <Button  Background="AntiqueWhite" Content="Заказы" FontFamily="Times New Roman" Margin="5"></Button>
+            <Button  Background="AntiqueWhite" Content="Машины" FontFamily="Times New Roman" Margin="5" Click="Button_Click_3"></Button>
+            <Button  Background="AntiqueWhite" Content="История входа" FontFamily="Times New Roman" Margin="5"></Button>
+            <Button  Background="AntiqueWhite" Content="Сотрудники" FontFamily="Times New Roman" Margin="5"></Button>
+            <Button   Content="Список машин" FontFamily="Times New Roman" Margin="5" Background="Green" BorderBrush="Red"></Button>
+            <Button  Background="AntiqueWhite" Content="Сложить стоимость всех автомобилей" FontFamily="Times New Roman" Margin="5" Click="Button_Click_4" Width="57"></Button>
+            <Button Width="100" Click="Button_Click_5" Background="AntiqueWhite" Content="Создать таблицу" Margin="5"></Button>
+           
+            
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Width="auto" Grid.Row="1">
+            <Button Name="BtnEdit" Content="Добавить данные" Click="BtnRedData_Click"  FontFamily="Times New Roman" HorizontalAlignment="Right" Margin="5" Background="AntiqueWhite"  />
+            <Button Name="BtnDel" Content="Удалить запись" Click="BtnDel_Click"  FontFamily="Times New Roman" HorizontalAlignment="Right" Margin="5" Background="AntiqueWhite"  />
+            
         </StackPanel>
 
         <StackPanel  Grid.Row="2" Orientation="Horizontal" Margin="0 0 0 25" Grid.RowSpan="2">
@@ -34,19 +43,9 @@
 
         </StackPanel>
       
-        <DataGrid Visibility="Collapsed" IsReadOnly="True" AutoGenerateColumns="False" Name="ClientsList">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Номер клиента" Binding="{Binding ClientID}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Имя" Binding="{Binding FirstName }"></DataGridTextColumn>
-                <DataGridTextColumn Header="Фамилия" Binding="{Binding MiddleName}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Отчество" Binding="{Binding LastName}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Номер телефона" Binding="{Binding PhoneNumber}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Почта" Binding="{Binding Email}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Серия и номер паспорта" Binding="{Binding PassNumber}" Width="*"></DataGridTextColumn>
-                
-            </DataGrid.Columns>
-        </DataGrid>
-        <DataGrid Visibility="Collapsed" IsReadOnly="True" AutoGenerateColumns="False" Name="CarsList">
+       
+        
+        <DataGrid Name="CarsView" Visibility="Visible" IsReadOnly="True" AutoGenerateColumns="False" MouseDoubleClick="CarsList_MouseDoubleClick">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Номер машины" Binding="{Binding CarID}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Марка" Binding="{Binding Mark}"></DataGridTextColumn>
@@ -55,8 +54,15 @@
                 <DataGridTextColumn Header="Тип кузова" Binding="{Binding Type}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Год выпуска" Binding="{Binding Year}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Номер страны" Binding="{Binding CountryID}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Цена" Binding="{Binding Cost}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Цена" Binding="{Binding Cost, StringFormat='{}{0:N0} ₽ Руб.'}"></DataGridTextColumn>
                 <DataGridTextColumn Header="VIN номер" Binding="{Binding VIN}"></DataGridTextColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="BtnRedData" Content="Редактировать данные" Click="BtnRedData_Click"  FontFamily="Times New Roman" HorizontalAlignment="Right" Margin="5" Background="AntiqueWhite"  />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
 

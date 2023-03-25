@@ -17,6 +17,8 @@
     <NavigationProperty Name="Drives" Relationship="Self.FK_Cars_Drives" FromRole="Cars" ToRole="Drives" />
     <NavigationProperty Name="Countrys" Relationship="Self.FK_Countrys_Cars" FromRole="Cars" ToRole="Countrys" />
     <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Cars" FromRole="Cars" ToRole="Orders" />
+    <Property Name="Actuality" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TestDrive" Relationship="AutoSphereModel.FK_TestDrive_Cars" FromRole="Cars" ToRole="TestDrive" />
   </EntityType>
   <EntityType Name="Clients">
     <Key>
@@ -30,6 +32,7 @@
     <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="PassNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Clients" FromRole="Clients" ToRole="Orders" />
+    <NavigationProperty Name="Users" Relationship="AutoSphereModel.FK_Users_Clients" FromRole="Clients" ToRole="Users" />
   </EntityType>
   <EntityType Name="Countrys">
     <Key>
@@ -148,6 +151,8 @@
     <Property Name="RoleID" Type="Int32" Nullable="false" />
     <NavigationProperty Name="EnterHistory" Relationship="Self.FK_EnterHistory_Users" FromRole="Users" ToRole="EnterHistory" />
     <NavigationProperty Name="Roles" Relationship="Self.FK_Users_Roles" FromRole="Users" ToRole="Roles" />
+    <Property Name="ClientID" Type="Int32" />
+    <NavigationProperty Name="Clients" Relationship="AutoSphereModel.FK_Users_Clients" FromRole="Users" ToRole="Clients" />
   </EntityType>
   <EntityType Name="Zones">
     <Key>
@@ -364,5 +369,57 @@
       <End Role="Zones" EntitySet="Zones" />
       <End Role="Staff" EntitySet="Staff" />
     </AssociationSet>
+    <AssociationSet Name="FK_Users_Clients" Association="AutoSphereModel.FK_Users_Clients">
+      <End Role="Clients" EntitySet="Clients" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <EntitySet Name="TestDrive" EntityType="AutoSphereModel.TestDrive" />
+    <AssociationSet Name="FK_TestDrive_Cars" Association="AutoSphereModel.FK_TestDrive_Cars">
+      <End Role="Cars" EntitySet="Cars" />
+      <End Role="TestDrive" EntitySet="TestDrive" />
+    </AssociationSet>
+    <EntitySet Name="Dates" EntityType="AutoSphereModel.Dates" />
   </EntityContainer>
+  <Association Name="FK_Users_Clients">
+    <End Type="AutoSphereModel.Clients" Role="Clients" Multiplicity="0..1" />
+    <End Type="AutoSphereModel.Users" Role="Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clients">
+        <PropertyRef Name="ClientID" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="ClientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="TestDrive">
+    <Key>
+      <PropertyRef Name="TestDriveID" />
+    </Key>
+    <Property Name="TestDriveID" Type="Int32" Nullable="false" />
+    <Property Name="CarID" Type="Int32" />
+    <Property Name="Data" Type="DateTime" Precision="0" />
+    <Property Name="ClientID" Type="Int32" />
+    <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="Cars" Relationship="AutoSphereModel.FK_TestDrive_Cars" FromRole="TestDrive" ToRole="Cars" />
+  </EntityType>
+  <Association Name="FK_TestDrive_Cars">
+    <End Type="AutoSphereModel.Cars" Role="Cars" Multiplicity="0..1" />
+    <End Type="AutoSphereModel.TestDrive" Role="TestDrive" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cars">
+        <PropertyRef Name="CarID" />
+      </Principal>
+      <Dependent Role="TestDrive">
+        <PropertyRef Name="CarID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Dates">
+    <Key>
+      <PropertyRef Name="DateID" />
+    </Key>
+    <Property Name="DateID" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+  </EntityType>
 </Schema>

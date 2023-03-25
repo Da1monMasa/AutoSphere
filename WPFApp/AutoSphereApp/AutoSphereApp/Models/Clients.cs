@@ -18,6 +18,7 @@ namespace AutoSphereApp.Models
         public Clients()
         {
             this.Orders = new HashSet<Orders>();
+            this.Users = new HashSet<Users>();
         }
     
         public int ClientID { get; set; }
@@ -30,5 +31,7 @@ namespace AutoSphereApp.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Orders> Orders { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Users> Users { get; set; }
     }
 }

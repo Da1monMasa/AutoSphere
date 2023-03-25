@@ -10,9 +10,108 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="25"></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Button Name="QuitButton" Content="На главную" HorizontalAlignment="Left" Width="100" Click="QuitButton_Click"></Button>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"></ColumnDefinition>
+            <ColumnDefinition Width="1700"></ColumnDefinition>
+            <ColumnDefinition Width="200" ></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Orientation="Horizontal" Grid.Column="1">
+            <Label Content="Поиск машины" Height="25" FontFamily="Times New Roman" VerticalAlignment="Center"></Label>
+            <TextBox Name="SearchList" Width="200" Height="25" TextChanged="SearchList_TextChanged"></TextBox>
+            <CheckBox Name="ActualCars" Content="В наличии" Cursor="Hand" Unchecked="ActualCars_Unchecked" Height="25" Width="83" VerticalContentAlignment="Center" Margin="5" FontFamily="Times New Roman" Checked="ActualCars_Checked"></CheckBox>
+            <CheckBox Name="PodZakaz" Content="Под заказ" Cursor="Hand" Unchecked="PodZakaz_Unchecked" Height="25" Width="83" VerticalContentAlignment="Center" Margin="5" FontFamily="Times New Roman" Checked="PodZakaz_Checked"></CheckBox>
+            <Button Content="Цена по убыванию" Height="25" Width="auto" FontFamily="Times New Roman" Click="Button_Click_1"></Button>
+            <Label Content="Выберите модель" Height="25" FontFamily="Times New Roman"></Label>
+            <ComboBox Name="MarksList" Width="200" Height="25" FontFamily="Times New Roman" Cursor="Hand" Margin="5" SelectionChanged="MarksList_SelectionChanged"></ComboBox>
+            <Button Name="ResetFilters" Height="24" Width="126" Content="Сбросить фильтры" Click="ResetFilters_Click" Cursor="Hand" ></Button>
+
+
+
+
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Left" Grid.Row="1" Grid.Column="2" VerticalAlignment="Top" Orientation="Vertical">
+            <Image Width="100" Source="\Resources\guaranty.png"></Image>
+            <Label Content="Корзина" HorizontalAlignment="Center" FontFamily="Times New Roman" FontWeight="Bold" FontSize="20"></Label>
+            <DataGrid Name="Cart" AutoGenerateColumns="False" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="30" Header="№" Binding="{Binding CarID}"></DataGridTextColumn>
+                    <DataGridTextColumn Width="65" Header="Дата" Binding="{Binding Data}"></DataGridTextColumn>
+                    <DataGridTextColumn  Header="Цена" Binding="{Binding Price, StringFormat='{}{0:N0} ₽ Руб.'}"></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Button Margin="5" Content="Заказать тест драйв" Click="Button_Click"></Button>
+        </StackPanel>
+        <WrapPanel Grid.Row="1" Grid.Column="1" Width="auto" Visibility="Visible">
+            <ListView SelectionChanged="CarsViewPanel_SelectionChanged" Name="CarsViewPanel" Grid.Column="1" Grid.Row="1"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" VerticalAlignment="Center" Visibility="Visible">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" VerticalAlignment="Center"></WrapPanel>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemTemplate>
+
+                    <DataTemplate>
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height = "75" ></RowDefinition >
+                                <RowDefinition  Height = "310" ></RowDefinition >
+                                <RowDefinition Height = "auto" ></RowDefinition >
+                                <RowDefinition Height = "auto" ></RowDefinition >
+                                <RowDefinition Height = "auto" ></RowDefinition >
+                            </Grid.RowDefinitions >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="500"></ColumnDefinition>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Image Width = "400" Grid.Row = "1" Stretch = "UniformToFill" HorizontalAlignment = "Center" Margin = "5" >
+                                <Image.Source>
+
+                                    <ImageSource >\Resources\loginImage.png</ImageSource >
+
+                                </Image.Source>
+                            </Image >
+                            <TextBlock Text = "{Binding CarID}" VerticalAlignment = "Center" TextAlignment = "Center" Width = "450"
+                                   TextWrapping = "Wrap" HorizontalAlignment = "Center" FontSize = "26" Grid.Row = "0" ></TextBlock >
+                            <TextBlock Text = "{Binding Mark}" Grid.Row = "2"  HorizontalAlignment = "Center" FontSize = "20" FontWeight = "Bold" ></TextBlock >
+                            <TextBlock Text = "{Binding Model}" Grid.Row = "3" FontSize = "14" HorizontalAlignment = "Right" ></TextBlock >
+                            <TextBlock Text = "{Binding Cost,StringFormat='{}{0:N0} ₽ Руб.'}" Grid.Row = "3" FontSize = "14" HorizontalAlignment = "Left" ></TextBlock >
+                            <TextBlock Text="Описание:" Grid.Column="2" Grid.Row="0" VerticalAlignment="Top"></TextBlock>
+                            <TextBlock Text="{Binding Actuality}" Grid.Row="3" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center"></TextBlock>
+                            <TextBlock Text="adgasdgsdfadgasdgsdfadgasdgsdfadgasdfadgasdgsdfadgfadgasdgsdfadgasdgsdfadgasdgsdfadsdgsdfadgasdgsdfadgasdgsdasdgsdfadgasdgsdfadsdgsdfadgasdgsdfadgasdgsddfggsdgsdgsdgsdgsdgfadgasdgsdfadgasdgsdfadgasdgsdfadgasdgsdfadgasdgsdf" Grid.Row="1" Width="300" Height="1000" Grid.Column="2"  TextWrapping="Wrap"></TextBlock>
+
+                        </Grid >
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackPanel Name="ClientDataPAnel" Visibility="Collapsed" Orientation="Vertical" Width="auto">
+                <Label Name="ClientFirstName" FontFamily="Times New Roman" FontWeight="Bold" Content="Имя" Margin="5"  Height="21" Width="auto"></Label>
+                <TextBox Name="Firstname" Width="auto" Height="auto" Margin="5"></TextBox>
+                <Label Name="ClientMiddleName" FontFamily="Times New Roman" FontWeight="Bold" Content="Фамилия" Margin="5"  Height="21" Width="auto"></Label>
+                <TextBox Name="MiddleName" Margin="5" Width="auto" Height="auto"></TextBox>
+                <Label Name="ClientLastName" FontFamily="Times New Roman" FontWeight="Bold" Content="Отчество" Margin="5"  Height="21" Width="auto"></Label>
+                <TextBox Name="LastName" Margin="5" Width="auto" Height="auto"></TextBox>
+                <Label Name="ClientNumber" FontFamily="Times New Roman" FontWeight="Bold" Content="Номер телефона" Margin="5"  Height="21" Width="auto"></Label>
+                <TextBox Name="PhoneNumber" Margin="5" Width="auto" Height="auto"></TextBox>
+                <Label Name="ClientEmail" FontFamily="Times New Roman" FontWeight="Bold" Content="Электронная почта" Margin="5"  Height="21" Width="auto"></Label>
+                <TextBox Name="Email" Margin="5" Width="auto" Height="auto"></TextBox>
+                <Label Name="ClientPassNumbers" FontFamily="Times New Roman" FontWeight="Bold" Content="Паспортные данные" Margin="5"  Height="21" Width="auto"></Label>
+                <TextBox Name="PassNumbers" Margin="5" Width="auto" Height="auto" ></TextBox>
+                <Label Name="ClientId" FontFamily="Times New Roman" FontWeight="Bold" Content="Номер клиента" Margin="5"  Height="21" Width="auto"></Label>
+                <TextBox Name="ClientIdBox" Margin="5" Width="auto" Height="auto" ></TextBox>
+                <Label Name="TestDrivesDates" FontFamily="Times New Roman" FontWeight="Bold" Content="Выберите дату" Margin="5"  Height="21" Width="auto"></Label>
+                <ComboBox Name="DatesComboBox" ItemStringFormat="dd.MM.yyyy" ItemsSource="{Binding Dates}" />
+
+
+            </StackPanel>
+        </WrapPanel>
+
+
+
+
     </Grid>
 </Page>
