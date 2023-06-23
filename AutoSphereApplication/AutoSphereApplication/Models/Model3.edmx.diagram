@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8ef8b5b153b24deaba2a3b65718e2487" Name="Diagram1" ZoomLevel="55">
+        <EntityTypeShape EntityType="AutoSphereBDModel.Roles" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoSphereBDModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoSphereBDModel.Users" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <AssociationConnector Association="AutoSphereBDModel.FK_Users_Roles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="AutoSphereBDModel.Clients" Width="1.5" PointX="3.375" PointY="5" />
+        <AssociationConnector Association="AutoSphereBDModel.FK_Users_Clients" />
+        <EntityTypeShape EntityType="AutoSphereBDModel.Cars" Width="1.5" PointX="5.375" PointY="13.25" />
+        <EntityTypeShape EntityType="AutoSphereBDModel.Countrys" Width="1.5" PointX="3.125" PointY="13.125" />
+        <EntityTypeShape EntityType="AutoSphereBDModel.Drives" Width="1.5" PointX="3.125" PointY="15.75" />
+        <EntityTypeShape EntityType="AutoSphereBDModel.EnterHistory" Width="1.5" PointX="5.25" PointY="5.5" />
+        <EntityTypeShape EntityType="AutoSphereBDModel.Marks" Width="1.5" PointX="5.375" PointY="9" />
+        <EntityTypeShape EntityType="AutoSphereBDModel.Orders" Width="1.5" PointX="7.625" PointY="4.875" />
+        <EntityTypeShape EntityType="AutoSphereBDModel.Services" Width="1.5" PointX="5.375" PointY="18.125" />
+        <EntityTypeShape EntityType="AutoSphereBDModel.Stuff" Width="1.5" PointX="3" PointY="0.75" />
+        <EntityTypeShape EntityType="AutoSphereBDModel.Zones" Width="1.5" PointX="0.75" PointY="11.5" />
+        <AssociationConnector Association="AutoSphereBDModel.FK_Cars_Countrys" />
+        <AssociationConnector Association="AutoSphereBDModel.FK_Cars_Drives" />
+        <AssociationConnector Association="AutoSphereBDModel.FK_Orders_Cars" />
+        <AssociationConnector Association="AutoSphereBDModel.FK_Orders_Clients" />
+        <AssociationConnector Association="AutoSphereBDModel.FK_EnterHistory_Users" />
+        <AssociationConnector Association="AutoSphereBDModel.FK_Orders_Services" />
+        <AssociationConnector Association="AutoSphereBDModel.FK_Orders_Stuff" />
+        <AssociationConnector Association="AutoSphereBDModel.FK_Stuff_Roles" />
+        <AssociationConnector Association="AutoSphereBDModel.FK_Stuff_Zones" />
+        <EntityTypeShape EntityType="AutoSphereBDModel.TestDrive" Width="1.5" PointX="7.625" PointY="9.875" />
+        <AssociationConnector Association="AutoSphereBDModel.FK_TestDrive_Cars" />
+        <AssociationConnector Association="AutoSphereBDModel.FK_TestDrive_Clients" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

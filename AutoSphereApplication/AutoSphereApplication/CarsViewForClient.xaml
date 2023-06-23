@@ -1,0 +1,335 @@
+﻿<Page x:Class="AutoSphereApplication.CarsViewForClient"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AutoSphereApplication"
+      xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+      mc:Ignorable="d" 
+      d:DesignHeight="1080" d:DesignWidth="1920"
+      Title="CarsViewForClient">
+
+    <Grid Background="OldLace">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition  Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            
+        </Grid.ColumnDefinitions>
+        <Border Background="#FFFDEDCE" Margin="5" Grid.Column="1" BorderThickness="2" BorderBrush="Black" CornerRadius="50" Width="1145">
+            <StackPanel  HorizontalAlignment="Center" Orientation="Horizontal" Grid.Column="1">
+               
+               
+                <Label Content="Поиск машины" Height="25" FontFamily="Times New Roman" VerticalAlignment="Center"></Label>
+              
+                <TextBox Name="SearchList" Width="200" Height="25" TextChanged="SearchList_TextChanged"></TextBox>
+                <CheckBox Name="ActualCars" Content="В наличии" Cursor="Hand" Unchecked="ActualCars_Unchecked" Height="25" Width="83" VerticalContentAlignment="Center" Margin="5" FontFamily="Times New Roman" Checked="ActualCars_Checked"></CheckBox>
+                <CheckBox Name="PodZakaz" Content="Под заказ" Cursor="Hand" Unchecked="PodZakaz_Unchecked" Height="25" Width="83" VerticalContentAlignment="Center" Margin="5" FontFamily="Times New Roman" Checked="PodZakaz_Checked"></CheckBox>
+                <Button Content="Цена по убыванию"  Height="25" Width="auto" FontFamily="Times New Roman" Click="Button_Click_1"></Button>
+                <Label Content="Выберите модель" Height="25" FontFamily="Times New Roman"></Label>
+                <ComboBox Name="MarksList" Width="200" Height="25" FontFamily="Times New Roman" Cursor="Hand" Margin="5" SelectionChanged="MarksList_SelectionChanged"></ComboBox>
+                <Button Name="ResetFilters" Height="24" Width="126" Content="Сбросить фильтры" Click="ResetFilters_Click" Cursor="Hand" ></Button>
+                <Button Content="Заказать тест-драйв" Height="24" Margin="5" Click="Button_Click"></Button>
+
+
+
+
+            </StackPanel>
+        </Border>
+        
+        <StackPanel Grid.Row="1" Grid.Column="1" Name="ClientDataPAnel" Visibility="Collapsed" HorizontalAlignment="Left" Orientation="Vertical" Width="300">
+            <Image Width="200">
+                <Image.Source>
+                    <BitmapImage UriSource="/Resources/clients.png"></BitmapImage>
+                </Image.Source>
+            </Image>
+            <Label Content="Данные заказа" FontSize="24" HorizontalAlignment="Center" FontStyle="Italic" FontWeight="Bold"></Label>
+            <Label Name="ClientFirstName" FontFamily="Times New Roman" FontWeight="Bold" Content="Имя" Margin="5"  Height="21" Width="auto"></Label>
+            <TextBox Name="Firstname" Width="auto" Height="auto" Margin="5"></TextBox>
+            <Label Name="ClientMiddleName" FontFamily="Times New Roman" FontWeight="Bold" Content="Фамилия" Margin="5"  Height="21" Width="auto"></Label>
+            <TextBox Name="MiddleName" Margin="5" Width="auto" Height="auto"></TextBox>
+            <Label Name="ClientLastName" FontFamily="Times New Roman" FontWeight="Bold" Content="Отчество" Margin="5"  Height="21" Width="auto"></Label>
+            <TextBox Name="LastName" Margin="5" Width="auto" Height="auto"></TextBox>
+            <Label Name="ClientNumber" FontFamily="Times New Roman" FontWeight="Bold" Content="Номер телефона" Margin="5"  Height="21" Width="auto"></Label>
+            <TextBox Name="PhoneNumber" Margin="5" Width="auto" Height="auto"></TextBox>
+            <Label Name="ClientEmail" FontFamily="Times New Roman" FontWeight="Bold" Content="Электронная почта" Margin="5"  Height="21" Width="auto"></Label>
+            <TextBox Name="Email" Margin="5" Width="auto" Height="auto"></TextBox>
+            <Label Name="ClientPassNumbers" FontFamily="Times New Roman" FontWeight="Bold" Content="Паспортные данные" Margin="5"  Height="21" Width="auto"></Label>
+            <TextBox Name="PassNumbers" Margin="5" Width="auto" Height="auto" ></TextBox>
+            <Label Name="ClientId" FontFamily="Times New Roman" FontWeight="Bold" Content="Номер клиента" Margin="5"  Height="21" Width="auto"></Label>
+            <TextBox Name="ClientIdBox" Margin="5" Width="auto" Height="auto" ></TextBox>
+            <Label Name="TestDrivesDates" FontFamily="Times New Roman" FontWeight="Bold" Content="Выберите дату" Margin="5"  Height="21" Width="auto"></Label>
+            <ComboBox Name="DatesComboBox" ItemStringFormat="dd.MM.yyyy" ItemsSource="{Binding Dates}" />
+            <Image Height="100">
+                <Image.Source>
+                    <BitmapImage UriSource="/Resources/AutosphereLogotip.png"></BitmapImage>
+                </Image.Source>
+            </Image>
+           
+
+        </StackPanel>
+        <StackPanel Visibility="Collapsed"  Name="SelectedCarTrue" Width="1300" Orientation="Vertical" Grid.Row="1" HorizontalAlignment="Center" Grid.Column="1">
+            <Border Background="#FFFDEDCE" CornerRadius="50" Width="1000" BorderThickness="2" BorderBrush="Black">
+                <Label FontFamily="Comic Sans MS" HorizontalAlignment="Center" Content="Страница информации об автомобиле" FontSize="46"></Label>
+            </Border>
+            <Grid Height="450"  Margin="5">
+                <Border Background="#FFFDEDCE" BorderBrush="Black" BorderThickness="2" CornerRadius="25">
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                        <Label FontSize="20" Name="CarMark" Content="Марка автомобиля"></Label>
+                        <Label FontSize="20" Name="CarModel" Content="Модель автомобиля"></Label>
+                        
+                    </StackPanel>
+                </Border>
+               
+
+
+               
+                        <Image Name="SelectedCarImage" Width="900" Height="375">
+                            <Image.Source>
+                                <BitmapImage UriSource=""></BitmapImage>
+                            </Image.Source>
+                        </Image>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                    <Button HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10" Click="Button_Click_6" Content="Переключить фотографию">
+
+                    </Button>
+                    <Button Click="Button_Click_7" Height="20" Content="Просмотреть 3D модель"></Button>
+                   
+                </StackPanel>
+                
+                <StackPanel Width="400" Orientation="Vertical" HorizontalAlignment="Left">
+                    <Label Content="Описание" FontSize="24"></Label>
+                    <TextBlock Name="SelectedCarDescription" Text="" Width="320" Margin="2" TextWrapping="Wrap"></TextBlock>
+                    <Label Content="Каждый автомобиль проходит строгий контроль качества" FontSize="12" FontFamily="Times New Roman" HorizontalAlignment="Center" FontWeight="Bold"></Label>
+                    
+                    <Button BorderBrush="Transparent" Width="100" VerticalAlignment="Bottom" Click="Button_Click_5" Background="Transparent">
+                        <Image Height="100" >
+                            <Image.Source>
+                                <BitmapImage UriSource="C:\Users\daimo\Downloads\helpbutton.png"></BitmapImage>
+                            </Image.Source>
+                        </Image>
+                    </Button>
+                    <Button Content="Используйте эту кнопку для вызова помощи" Width="250" Background="Transparent" BorderThickness="0"></Button>
+                </StackPanel>
+                <StackPanel Margin="25" HorizontalAlignment="Right" Orientation="Vertical">
+                    <Label  Content="Стоимость" ></Label>
+                    <Label Content="Цифры стоимости" FontSize="20"   Name="SelectedCarVost"></Label>
+                    <Label Content="Цвет"></Label>
+                    <Label Name="SelectedCarColor" FontSize="20" Content="Цвет автомобиля"></Label>
+                    <Label Content="VIN"></Label>
+                    <Label Name="SelectedCarTestDriveCost" FontSize="20"></Label>
+                    <Label Content="Год выпуска"></Label>
+                    <Label Name="SelectedCarYear" FontSize="20"></Label>
+                    <Label Content="Наличие"></Label>
+                    <Label Name="SelectedCarActuality" FontSize="20"></Label>
+                    <Label Content="Привод"></Label>
+                    <Label Name="SelectedCarDrive" FontSize="20"></Label>
+                </StackPanel>
+                    
+            
+                    
+               
+                
+                
+            </Grid>
+            
+            <Border Name="VideoPlayerView" BorderBrush="Black" BorderThickness="2" CornerRadius="25" Height="270">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Orientation="Vertical" Background="Transparent" HorizontalAlignment="Center" Margin="5" VerticalAlignment="Bottom" x:Name="VidePlayer">
+                        <Label Content="Центр уведомлений" Margin="5" Foreground="Red" HorizontalAlignment="Left"></Label>
+                        <MediaElement Name="VideoPlayerAudi" Source="C:/Users\daimo\Downloads\funnycom.mp4" LoadedBehavior="Play" Width="500" Height="260" Volume="0.1" IsMuted="True" />
+                        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Row="3">
+                            <Button Content="Стоп" Name="StopAudi" Click="StopAudi_Click"  Height="25" Background="Red" Margin="5" />
+                            <Button Content="Назад"  Height="25" Name="Back15SecAudi" Click="Back15SecAudi_Click"  Margin="5" Background="Green" />
+                            <Button Content="Вперед"  Height="25" Click="Front15SecAudi_Click"   Margin="5" Background="Green"/>
+                            <Button Content="Выключить звук" Height="25" Margin="5" Background="Red" Click="Button_Click_2"></Button>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Grid.Column="2" Orientation="Vertical" Background="Transparent" HorizontalAlignment="Center" Margin="5" VerticalAlignment="Bottom" x:Name="VidePlayerMers">
+                        <Label Content="Центр уведомлений" Margin="5" Foreground="Red" HorizontalAlignment="Left"></Label>
+                        <MediaElement LoadedBehavior="Play" Name="VideoPlayerMers" Source="C:\Users\daimo\Downloads\mercedesshort.mp4" Width="500" Height="260" Volume="0.1" IsMuted="True" />
+                        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Row="3">
+                            <Button Content="Стоп" Name="StopMers"  Height="25" Background="Red" Margin="5" Click="StopMers_Click" />
+                            <Button Content="Назад"  Height="25" Name="Back15SecMers" Click="Back15SecMers_Click"  Margin="5" Background="Green" />
+                            <Button Content="Вперед"  Height="25" Name="Front15SecMers" Click="Front15SecMers_Click"  Margin="5" Background="Green"/>
+                            <Button Content="Выключить звук" Height="25" Margin="5" Background="Red" Click="Button_ClickMersVolume"></Button>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" HorizontalAlignment="Center">
+                        <Label FontSize="24" Content="Наши партнёры"></Label>
+                       
+                        
+                       
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" HorizontalAlignment="Center" Orientation="Horizontal">
+                        <Image Height="128">
+                            <Image.Source>
+                                <BitmapImage UriSource="C:\Users\daimo\Downloads\audilogo.png"></BitmapImage>
+                            </Image.Source>
+                        </Image>
+                        <Image Height="128">
+                            <Image.Source>
+                                <BitmapImage UriSource="C:\Users\daimo\Downloads\mersedeslogo.png"></BitmapImage>
+                            </Image.Source>
+                        </Image>
+                    </StackPanel>
+                    <Label Grid.Column="1" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Bottom" Content="Автомобили партнёров по приятной цене уже в наличии и под заказ!"></Label>
+                </Grid>
+                
+            </Border>
+            
+        </StackPanel>
+        <StackPanel Width="300" Name="Calendar" Visibility="Collapsed" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right">
+            <Grid>
+                <StackPanel Orientation="Vertical">
+                    
+                        <Calendar Margin="5"></Calendar>
+                    
+                    
+                    <Label FontSize="24" Content="ПОДСКАЗКИ" HorizontalAlignment="Center">
+                        <Label.Triggers>
+                            <EventTrigger RoutedEvent="Label.Loaded">
+                                <BeginStoryboard>
+                                    <Storyboard RepeatBehavior="Forever">
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0" Duration="0:0:1" AutoReverse="True" BeginTime="0:0:0">
+                                            <DoubleAnimation.EasingFunction>
+                                                <QuadraticEase EasingMode="EaseInOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:1" AutoReverse="True" BeginTime="0:0:2">
+                                            <DoubleAnimation.EasingFunction>
+                                                <QuadraticEase EasingMode="EaseInOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Label.Triggers>
+                        <Label.Foreground>
+                            <SolidColorBrush Color="Black" />
+                        </Label.Foreground>
+                    </Label>
+                    <Border BorderBrush="Black" BorderThickness="2" CornerRadius="10" Margin="5">
+                        <TextBlock Width="275" FontSize="15" Text="Чтобы заказать тест-драйв автомобиля - выберите доступную дату из выпадающего списка в левом нижнем углу и нажмите кнопку Заказать Тест-драйв" TextWrapping="Wrap"></TextBlock>
+                    </Border>
+                    <Border BorderBrush="Black" BorderThickness="2" CornerRadius="8" Margin="5">
+                        <TextBlock Width="275" FontSize="15" Text="Приходите на тест-драйвы вовремя! Инструкторы не любят ждать :(" TextWrapping="Wrap"></TextBlock>
+                    </Border>
+                    <Border BorderBrush="Black" BorderThickness="2" CornerRadius="10" Margin="5">
+                        <TextBlock Width="275" FontSize="15" Text="Чтобы переключить изображение автомобиля - воспользуйтесь специальной кнопкой-стрелкой" TextWrapping="Wrap"></TextBlock>
+                    </Border>
+                    <Border BorderBrush="Black" BorderThickness="2" CornerRadius="20" Margin="5">
+                        <TextBlock Width="275" FontSize="15" Text="С рекламой автомобилей можно взаимодействовать! Вы можете приостановить видео, заглушить его, перемотать на 15 секунд вперёд и назад с помощью специализированных кнопок под каждым видео" TextWrapping="Wrap"></TextBlock>
+                    </Border>
+                    <Border BorderBrush="Black" BorderThickness="2" CornerRadius="8" Margin="5">
+                        <TextBlock Width="275" FontSize="15" Text=" В случае возникновения каких-либо технических проблем воспользуйтесь кнопкой вызова администратора, либо закажите звонок разработчику с помощью специальной кнопки ниже. Благодарим Вас за терпение!" TextWrapping="Wrap"></TextBlock>
+                    </Border>
+                    
+                </StackPanel>
+                
+            </Grid>
+        </StackPanel>
+
+
+        <WrapPanel  Grid.Row="1" Grid.Column="1" Width="auto" Visibility="Visible">
+            <Border CornerRadius="10" BorderThickness="5" BorderBrush="Black">
+                
+                <ListView Background="Transparent"   SelectionChanged="CarsViewPanel_SelectionChanged" Name="CarsViewPanel" Width="1905" Grid.Column="1" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" VerticalAlignment="Center" Visibility="Visible">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="Background" Value="Transparent" />
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ListViewItem">
+                                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
+                                            <ContentPresenter />
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="Transparent" />
+                                </Trigger>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Background" Value="#7FF0F8FF" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal" VerticalAlignment="Center" Background="Transparent" />
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderBrush="Black"  BorderThickness="2" Margin="5" CornerRadius="15">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="400" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Image Name="CarImage" Width="605" Height="auto" Stretch="UniformToFill" HorizontalAlignment="Center" Margin="5">
+                                        <Image.Style>
+                                            <Style TargetType="Image">
+                                                <Setter Property="Source" Value="{Binding ImagePaths}" />
+                                            </Style>
+                                        </Image.Style>
+                                    </Image>
+                                    <TextBlock Text="{Binding CarID}" Grid.Row="1" VerticalAlignment="Center" TextAlignment="Center" Width="450" TextWrapping="Wrap" HorizontalAlignment="Center" FontSize="26" />
+                                    <TextBlock Text="{Binding Mark}" Grid.Row="2" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" />
+                                    <TextBlock Text="{Binding Model}"  Grid.Row="3" HorizontalAlignment="Center" FontSize="14" />
+                                    <Grid Grid.Row="3" Grid.Column="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <TextBlock Text="{Binding Cost, StringFormat='{}{0:N0} ₽ Руб.'}" VerticalAlignment="Bottom" FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" />
+                                    </Grid>
+                                    <TextBlock Text="Описание:" Grid.Row="0" Grid.Column="2" FontStyle="Italic" FontSize="20" VerticalAlignment="Top" />
+                                    <TextBlock Text="{Binding Actuality}" Grid.Row="4" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" />
+                                    <TextBlock Text="{Binding Description}" Grid.Row="0" Grid.Column="2" Width="300" Height="auto" FontSize="20" VerticalAlignment="Center" TextWrapping="Wrap" />
+                                    <StackPanel Grid.Row="0" Grid.Column="2" Orientation="Horizontal">
+                                        <Button Name="butttttt" Grid.Row="0" Height="30" Width="30" Margin="5" Grid.Column="2" VerticalAlignment="Bottom" Click="butttttt_Click" HorizontalAlignment="Left">
+                                            <Image Source="C:\Users\daimo\Downloads\leftarr.png" />
+                                        </Button>
+                                        <Button Grid.Row="0" Height="30" Width="30" Margin="5" Grid.Column="2" VerticalAlignment="Bottom" Click="NextPhoto_Click" HorizontalAlignment="Left">
+                                            <Image Source="C:\Users\daimo\Downloads\rightarr.png" />
+                                        </Button>
+                                        <Button Content="Подробно" Click="Button_Click_3" Height="30" Grid.Row="0" Grid.Column="2" VerticalAlignment="Bottom" Margin="5" />
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Border>
+
+
+        </WrapPanel>
+
+
+
+
+    </Grid>
+</Page>

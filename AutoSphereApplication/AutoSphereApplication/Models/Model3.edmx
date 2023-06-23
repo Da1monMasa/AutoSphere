@@ -1,0 +1,982 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище AutoSphereBDModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cars">
+          <Key>
+            <PropertyRef Name="CarID" />
+          </Key>
+          <Property Name="CarID" Type="int" Nullable="false" />
+          <Property Name="Mark" Type="nvarchar" MaxLength="50" />
+          <Property Name="Model" Type="nvarchar" MaxLength="50" />
+          <Property Name="Color" Type="nvarchar" MaxLength="50" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="Year" Type="int" />
+          <Property Name="CountryID" Type="int" />
+          <Property Name="Cost" Type="money" />
+          <Property Name="VIN" Type="nvarchar" MaxLength="50" />
+          <Property Name="DriveID" Type="int" />
+          <Property Name="Actuality" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="ImagePaths" Type="nvarchar(max)" />
+          <Property Name="ImagePaths2" Type="nvarchar(max)" />
+          <Property Name="ImagePaths3" Type="nvarchar(max)" />
+          <Property Name="ImagePaths4" Type="nvarchar(max)" />
+          <Property Name="SalonPath1" Type="nvarchar(max)" />
+          <Property Name="SalonPath2" Type="nvarchar(max)" />
+          <Property Name="SalonPath3" Type="nvarchar(max)" />
+          <Property Name="SalonPath4" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Clients">
+          <Key>
+            <PropertyRef Name="ClientID" />
+          </Key>
+          <Property Name="ClientID" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="PassNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="BirthDay" Type="date" />
+        </EntityType>
+        <EntityType Name="Countrys">
+          <Key>
+            <PropertyRef Name="CountryID" />
+          </Key>
+          <Property Name="CountryID" Type="int" Nullable="false" />
+          <Property Name="CountryCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="CountryName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Drives">
+          <Key>
+            <PropertyRef Name="DriveID" />
+          </Key>
+          <Property Name="DriveID" Type="int" Nullable="false" />
+          <Property Name="DriveName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="EnterHistory">
+          <Key>
+            <PropertyRef Name="EnterID" />
+          </Key>
+          <Property Name="EnterID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateTime" Type="date" />
+        </EntityType>
+        <EntityType Name="Marks">
+          <Key>
+            <PropertyRef Name="MarkID" />
+          </Key>
+          <Property Name="MarkID" Type="int" Nullable="false" />
+          <Property Name="MarkName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CountryID" Type="int" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="int" Nullable="false" />
+          <Property Name="CarID" Type="int" />
+          <Property Name="Garanty" Type="int" />
+          <Property Name="DateOfOrder" Type="date" />
+          <Property Name="StuffID" Type="int" />
+          <Property Name="ClientID" Type="int" />
+          <Property Name="ServID" Type="int" />
+          <Property Name="Sum" Type="money" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Services">
+          <Key>
+            <PropertyRef Name="ServID" />
+          </Key>
+          <Property Name="ServID" Type="int" Nullable="false" />
+          <Property Name="ServName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Cost" Type="money" />
+        </EntityType>
+        <EntityType Name="Stuff">
+          <Key>
+            <PropertyRef Name="StaffID" />
+          </Key>
+          <Property Name="StaffID" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateOfBirth" Type="date" />
+          <Property Name="RoleID" Type="int" />
+          <Property Name="ZoneID" Type="int" />
+          <Property Name="Salary" Type="money" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TestDrive">
+          <Key>
+            <PropertyRef Name="TestDriveID" />
+          </Key>
+          <Property Name="TestDriveID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientID" Type="int" />
+          <Property Name="Price" Type="nvarchar" MaxLength="50" />
+          <Property Name="Data" Type="nvarchar" MaxLength="50" />
+          <Property Name="CarID" Type="int" />
+          <Property Name="Serv" Type="int" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="ClientID" Type="int" />
+        </EntityType>
+        <EntityType Name="Zones">
+          <Key>
+            <PropertyRef Name="ZoneID" />
+          </Key>
+          <Property Name="ZoneID" Type="int" Nullable="false" />
+          <Property Name="ZoneName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ZoneSize" Type="int" />
+        </EntityType>
+        <Association Name="FK_Cars_Countrys">
+          <End Role="Countrys" Type="Self.Countrys" Multiplicity="0..1" />
+          <End Role="Cars" Type="Self.Cars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countrys">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="Cars">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cars_Drives">
+          <End Role="Drives" Type="Self.Drives" Multiplicity="0..1" />
+          <End Role="Cars" Type="Self.Cars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Drives">
+              <PropertyRef Name="DriveID" />
+            </Principal>
+            <Dependent Role="Cars">
+              <PropertyRef Name="DriveID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EnterHistory_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="EnterHistory" Type="Self.EnterHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="EnterHistory">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Cars">
+          <End Role="Cars" Type="Self.Cars" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cars">
+              <PropertyRef Name="CarID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="CarID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Clients">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="ClientID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Services">
+          <End Role="Services" Type="Self.Services" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="ServID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="ServID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Stuff">
+          <End Role="Stuff" Type="Self.Stuff" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stuff">
+              <PropertyRef Name="StaffID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="StuffID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stuff_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
+          <End Role="Stuff" Type="Self.Stuff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="Stuff">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stuff_Zones">
+          <End Role="Zones" Type="Self.Zones" Multiplicity="0..1" />
+          <End Role="Stuff" Type="Self.Stuff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zones">
+              <PropertyRef Name="ZoneID" />
+            </Principal>
+            <Dependent Role="Stuff">
+              <PropertyRef Name="ZoneID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TestDrive_Cars">
+          <End Role="Cars" Type="Self.Cars" Multiplicity="0..1" />
+          <End Role="TestDrive" Type="Self.TestDrive" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cars">
+              <PropertyRef Name="CarID" />
+            </Principal>
+            <Dependent Role="TestDrive">
+              <PropertyRef Name="CarID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TestDrive_Clients">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="0..1" />
+          <End Role="TestDrive" Type="Self.TestDrive" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="ClientID" />
+            </Principal>
+            <Dependent Role="TestDrive">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Clients">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="ClientID" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище AutoSphereBDModelContainer">
+          <EntitySet Name="Cars" EntityType="Self.Cars" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Countrys" EntityType="Self.Countrys" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Drives" EntityType="Self.Drives" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EnterHistory" EntityType="Self.EnterHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Marks" EntityType="Self.Marks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Services" EntityType="Self.Services" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stuff" EntityType="Self.Stuff" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TestDrive" EntityType="Self.TestDrive" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Zones" EntityType="Self.Zones" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Cars_Countrys" Association="Self.FK_Cars_Countrys">
+            <End Role="Countrys" EntitySet="Countrys" />
+            <End Role="Cars" EntitySet="Cars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cars_Drives" Association="Self.FK_Cars_Drives">
+            <End Role="Drives" EntitySet="Drives" />
+            <End Role="Cars" EntitySet="Cars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EnterHistory_Users" Association="Self.FK_EnterHistory_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="EnterHistory" EntitySet="EnterHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Cars" Association="Self.FK_Orders_Cars">
+            <End Role="Cars" EntitySet="Cars" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Clients" Association="Self.FK_Orders_Clients">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Services" Association="Self.FK_Orders_Services">
+            <End Role="Services" EntitySet="Services" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Stuff" Association="Self.FK_Orders_Stuff">
+            <End Role="Stuff" EntitySet="Stuff" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stuff_Roles" Association="Self.FK_Stuff_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Stuff" EntitySet="Stuff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stuff_Zones" Association="Self.FK_Stuff_Zones">
+            <End Role="Zones" EntitySet="Zones" />
+            <End Role="Stuff" EntitySet="Stuff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TestDrive_Cars" Association="Self.FK_TestDrive_Cars">
+            <End Role="Cars" EntitySet="Cars" />
+            <End Role="TestDrive" EntitySet="TestDrive" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TestDrive_Clients" Association="Self.FK_TestDrive_Clients">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="TestDrive" EntitySet="TestDrive" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Clients" Association="Self.FK_Users_Clients">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Roles" Association="Self.FK_Users_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AutoSphereBDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="Int32" Nullable="false" />
+          <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Users_Roles" FromRole="Roles" ToRole="Users" />
+          <NavigationProperty Name="Stuff" Relationship="AutoSphereBDModel.FK_Stuff_Roles" FromRole="Roles" ToRole="Stuff" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RoleID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Roles" Relationship="Self.FK_Users_Roles" FromRole="Users" ToRole="Roles" />
+          <Property Name="ClientID" Type="Int32" />
+          <NavigationProperty Name="Clients" Relationship="AutoSphereBDModel.FK_Users_Clients" FromRole="Users" ToRole="Clients" />
+          <NavigationProperty Name="EnterHistory" Relationship="AutoSphereBDModel.FK_EnterHistory_Users" FromRole="Users" ToRole="EnterHistory" />
+        </EntityType>
+        <Association Name="FK_Users_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AutoSphereBDEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Roles" EntityType="Self.Roles" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <AssociationSet Name="FK_Users_Roles" Association="Self.FK_Users_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <EntitySet Name="Clients" EntityType="AutoSphereBDModel.Clients" />
+          <AssociationSet Name="FK_Users_Clients" Association="AutoSphereBDModel.FK_Users_Clients">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <EntitySet Name="Cars" EntityType="AutoSphereBDModel.Cars" />
+          <EntitySet Name="Countrys" EntityType="AutoSphereBDModel.Countrys" />
+          <EntitySet Name="Drives" EntityType="AutoSphereBDModel.Drives" />
+          <EntitySet Name="EnterHistory" EntityType="AutoSphereBDModel.EnterHistory" />
+          <EntitySet Name="Marks" EntityType="AutoSphereBDModel.Marks" />
+          <EntitySet Name="Orders" EntityType="AutoSphereBDModel.Orders" />
+          <EntitySet Name="Services" EntityType="AutoSphereBDModel.Services" />
+          <EntitySet Name="Stuff" EntityType="AutoSphereBDModel.Stuff" />
+          <EntitySet Name="Zones" EntityType="AutoSphereBDModel.Zones" />
+          <AssociationSet Name="FK_Cars_Countrys" Association="AutoSphereBDModel.FK_Cars_Countrys">
+            <End Role="Countrys" EntitySet="Countrys" />
+            <End Role="Cars" EntitySet="Cars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cars_Drives" Association="AutoSphereBDModel.FK_Cars_Drives">
+            <End Role="Drives" EntitySet="Drives" />
+            <End Role="Cars" EntitySet="Cars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Cars" Association="AutoSphereBDModel.FK_Orders_Cars">
+            <End Role="Cars" EntitySet="Cars" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Clients" Association="AutoSphereBDModel.FK_Orders_Clients">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EnterHistory_Users" Association="AutoSphereBDModel.FK_EnterHistory_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="EnterHistory" EntitySet="EnterHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Services" Association="AutoSphereBDModel.FK_Orders_Services">
+            <End Role="Services" EntitySet="Services" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Stuff" Association="AutoSphereBDModel.FK_Orders_Stuff">
+            <End Role="Stuff" EntitySet="Stuff" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stuff_Roles" Association="AutoSphereBDModel.FK_Stuff_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Stuff" EntitySet="Stuff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stuff_Zones" Association="AutoSphereBDModel.FK_Stuff_Zones">
+            <End Role="Zones" EntitySet="Zones" />
+            <End Role="Stuff" EntitySet="Stuff" />
+          </AssociationSet>
+          <EntitySet Name="TestDrive" EntityType="AutoSphereBDModel.TestDrive" />
+          <AssociationSet Name="FK_TestDrive_Cars" Association="AutoSphereBDModel.FK_TestDrive_Cars">
+            <End Role="Cars" EntitySet="Cars" />
+            <End Role="TestDrive" EntitySet="TestDrive" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TestDrive_Clients" Association="AutoSphereBDModel.FK_TestDrive_Clients">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="TestDrive" EntitySet="TestDrive" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Clients">
+          <Key>
+            <PropertyRef Name="ClientID" />
+          </Key>
+          <Property Name="ClientID" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PassNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BirthDay" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Users" Relationship="AutoSphereBDModel.FK_Users_Clients" FromRole="Clients" ToRole="Users" />
+          <NavigationProperty Name="Orders" Relationship="AutoSphereBDModel.FK_Orders_Clients" FromRole="Clients" ToRole="Orders" />
+          <NavigationProperty Name="TestDrive" Relationship="AutoSphereBDModel.FK_TestDrive_Clients" FromRole="Clients" ToRole="TestDrive" />
+        </EntityType>
+        <Association Name="FK_Users_Clients">
+          <End Type="AutoSphereBDModel.Clients" Role="Clients" Multiplicity="0..1" />
+          <End Type="AutoSphereBDModel.Users" Role="Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="ClientID" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Cars">
+          <Key>
+            <PropertyRef Name="CarID" />
+          </Key>
+          <Property Name="CarID" Type="Int32" Nullable="false" />
+          <Property Name="Mark" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Color" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Year" Type="Int32" />
+          <Property Name="CountryID" Type="Int32" />
+          <Property Name="Cost" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="VIN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DriveID" Type="Int32" />
+          <Property Name="Actuality" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Countrys" Relationship="AutoSphereBDModel.FK_Cars_Countrys" FromRole="Cars" ToRole="Countrys" />
+          <NavigationProperty Name="Drives" Relationship="AutoSphereBDModel.FK_Cars_Drives" FromRole="Cars" ToRole="Drives" />
+          <NavigationProperty Name="Orders" Relationship="AutoSphereBDModel.FK_Orders_Cars" FromRole="Cars" ToRole="Orders" />
+          <NavigationProperty Name="TestDrive" Relationship="AutoSphereBDModel.FK_TestDrive_Cars" FromRole="Cars" ToRole="TestDrive" />
+          <Property Name="ImagePaths" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ImagePaths2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ImagePaths3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ImagePaths4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SalonPath1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SalonPath2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SalonPath3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SalonPath4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Countrys">
+          <Key>
+            <PropertyRef Name="CountryID" />
+          </Key>
+          <Property Name="CountryID" Type="Int32" Nullable="false" />
+          <Property Name="CountryCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CountryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Cars" Relationship="AutoSphereBDModel.FK_Cars_Countrys" FromRole="Countrys" ToRole="Cars" />
+        </EntityType>
+        <EntityType Name="Drives">
+          <Key>
+            <PropertyRef Name="DriveID" />
+          </Key>
+          <Property Name="DriveID" Type="Int32" Nullable="false" />
+          <Property Name="DriveName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Cars" Relationship="AutoSphereBDModel.FK_Cars_Drives" FromRole="Drives" ToRole="Cars" />
+        </EntityType>
+        <EntityType Name="EnterHistory">
+          <Key>
+            <PropertyRef Name="EnterID" />
+          </Key>
+          <Property Name="EnterID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateTime" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Users" Relationship="AutoSphereBDModel.FK_EnterHistory_Users" FromRole="EnterHistory" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Marks">
+          <Key>
+            <PropertyRef Name="MarkID" />
+          </Key>
+          <Property Name="MarkID" Type="Int32" Nullable="false" />
+          <Property Name="MarkName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CountryID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="Int32" Nullable="false" />
+          <Property Name="CarID" Type="Int32" />
+          <Property Name="Garanty" Type="Int32" />
+          <Property Name="DateOfOrder" Type="DateTime" Precision="0" />
+          <Property Name="StuffID" Type="Int32" />
+          <Property Name="ClientID" Type="Int32" />
+          <Property Name="ServID" Type="Int32" />
+          <Property Name="Sum" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="Cars" Relationship="AutoSphereBDModel.FK_Orders_Cars" FromRole="Orders" ToRole="Cars" />
+          <NavigationProperty Name="Clients" Relationship="AutoSphereBDModel.FK_Orders_Clients" FromRole="Orders" ToRole="Clients" />
+          <NavigationProperty Name="Services" Relationship="AutoSphereBDModel.FK_Orders_Services" FromRole="Orders" ToRole="Services" />
+          <NavigationProperty Name="Stuff" Relationship="AutoSphereBDModel.FK_Orders_Stuff" FromRole="Orders" ToRole="Stuff" />
+        </EntityType>
+        <EntityType Name="Services">
+          <Key>
+            <PropertyRef Name="ServID" />
+          </Key>
+          <Property Name="ServID" Type="Int32" Nullable="false" />
+          <Property Name="ServName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Cost" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="Orders" Relationship="AutoSphereBDModel.FK_Orders_Services" FromRole="Services" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="Stuff">
+          <Key>
+            <PropertyRef Name="StaffID" />
+          </Key>
+          <Property Name="StaffID" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+          <Property Name="RoleID" Type="Int32" />
+          <Property Name="ZoneID" Type="Int32" />
+          <Property Name="Salary" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="Orders" Relationship="AutoSphereBDModel.FK_Orders_Stuff" FromRole="Stuff" ToRole="Orders" />
+          <NavigationProperty Name="Roles" Relationship="AutoSphereBDModel.FK_Stuff_Roles" FromRole="Stuff" ToRole="Roles" />
+          <NavigationProperty Name="Zones" Relationship="AutoSphereBDModel.FK_Stuff_Zones" FromRole="Stuff" ToRole="Zones" />
+        </EntityType>
+        <EntityType Name="Zones">
+          <Key>
+            <PropertyRef Name="ZoneID" />
+          </Key>
+          <Property Name="ZoneID" Type="Int32" Nullable="false" />
+          <Property Name="ZoneName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ZoneSize" Type="Int32" />
+          <NavigationProperty Name="Stuff" Relationship="AutoSphereBDModel.FK_Stuff_Zones" FromRole="Zones" ToRole="Stuff" />
+        </EntityType>
+        <Association Name="FK_Cars_Countrys">
+          <End Type="AutoSphereBDModel.Countrys" Role="Countrys" Multiplicity="0..1" />
+          <End Type="AutoSphereBDModel.Cars" Role="Cars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countrys">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="Cars">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cars_Drives">
+          <End Type="AutoSphereBDModel.Drives" Role="Drives" Multiplicity="0..1" />
+          <End Type="AutoSphereBDModel.Cars" Role="Cars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Drives">
+              <PropertyRef Name="DriveID" />
+            </Principal>
+            <Dependent Role="Cars">
+              <PropertyRef Name="DriveID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Cars">
+          <End Type="AutoSphereBDModel.Cars" Role="Cars" Multiplicity="0..1" />
+          <End Type="AutoSphereBDModel.Orders" Role="Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cars">
+              <PropertyRef Name="CarID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="CarID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Clients">
+          <End Type="AutoSphereBDModel.Clients" Role="Clients" Multiplicity="0..1" />
+          <End Type="AutoSphereBDModel.Orders" Role="Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="ClientID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EnterHistory_Users">
+          <End Type="AutoSphereBDModel.Users" Role="Users" Multiplicity="0..1" />
+          <End Type="AutoSphereBDModel.EnterHistory" Role="EnterHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="EnterHistory">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Services">
+          <End Type="AutoSphereBDModel.Services" Role="Services" Multiplicity="0..1" />
+          <End Type="AutoSphereBDModel.Orders" Role="Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="ServID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="ServID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Stuff">
+          <End Type="AutoSphereBDModel.Stuff" Role="Stuff" Multiplicity="0..1" />
+          <End Type="AutoSphereBDModel.Orders" Role="Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stuff">
+              <PropertyRef Name="StaffID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="StuffID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stuff_Roles">
+          <End Type="AutoSphereBDModel.Roles" Role="Roles" Multiplicity="0..1" />
+          <End Type="AutoSphereBDModel.Stuff" Role="Stuff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="Stuff">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stuff_Zones">
+          <End Type="AutoSphereBDModel.Zones" Role="Zones" Multiplicity="0..1" />
+          <End Type="AutoSphereBDModel.Stuff" Role="Stuff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zones">
+              <PropertyRef Name="ZoneID" />
+            </Principal>
+            <Dependent Role="Stuff">
+              <PropertyRef Name="ZoneID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TestDrive">
+          <Key>
+            <PropertyRef Name="TestDriveID" />
+          </Key>
+          <Property Name="TestDriveID" Type="Int32" Nullable="false" />
+          <Property Name="ClientID" Type="Int32" />
+          <Property Name="Price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Data" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CarID" Type="Int32" />
+          <Property Name="Serv" Type="Int32" />
+          <NavigationProperty Name="Cars" Relationship="AutoSphereBDModel.FK_TestDrive_Cars" FromRole="TestDrive" ToRole="Cars" />
+          <NavigationProperty Name="Clients" Relationship="AutoSphereBDModel.FK_TestDrive_Clients" FromRole="TestDrive" ToRole="Clients" />
+        </EntityType>
+        <Association Name="FK_TestDrive_Cars">
+          <End Type="AutoSphereBDModel.Cars" Role="Cars" Multiplicity="0..1" />
+          <End Type="AutoSphereBDModel.TestDrive" Role="TestDrive" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cars">
+              <PropertyRef Name="CarID" />
+            </Principal>
+            <Dependent Role="TestDrive">
+              <PropertyRef Name="CarID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TestDrive_Clients">
+          <End Type="AutoSphereBDModel.Clients" Role="Clients" Multiplicity="0..1" />
+          <End Type="AutoSphereBDModel.TestDrive" Role="TestDrive" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="ClientID" />
+            </Principal>
+            <Dependent Role="TestDrive">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище AutoSphereBDModelContainer" CdmEntityContainer="AutoSphereBDEntities1">
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="AutoSphereBDModel.Roles">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="AutoSphereBDModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="AutoSphereBDModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="AutoSphereBDModel.Clients">
+              <MappingFragment StoreEntitySet="Clients">
+                <ScalarProperty Name="BirthDay" ColumnName="BirthDay" />
+                <ScalarProperty Name="PassNumber" ColumnName="PassNumber" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cars">
+            <EntityTypeMapping TypeName="AutoSphereBDModel.Cars">
+              <MappingFragment StoreEntitySet="Cars">
+                <ScalarProperty Name="SalonPath4" ColumnName="SalonPath4" />
+                <ScalarProperty Name="SalonPath3" ColumnName="SalonPath3" />
+                <ScalarProperty Name="SalonPath2" ColumnName="SalonPath2" />
+                <ScalarProperty Name="SalonPath1" ColumnName="SalonPath1" />
+                <ScalarProperty Name="ImagePaths4" ColumnName="ImagePaths4" />
+                <ScalarProperty Name="ImagePaths3" ColumnName="ImagePaths3" />
+                <ScalarProperty Name="ImagePaths2" ColumnName="ImagePaths2" />
+                <ScalarProperty Name="ImagePaths" ColumnName="ImagePaths" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Actuality" ColumnName="Actuality" />
+                <ScalarProperty Name="DriveID" ColumnName="DriveID" />
+                <ScalarProperty Name="VIN" ColumnName="VIN" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Mark" ColumnName="Mark" />
+                <ScalarProperty Name="CarID" ColumnName="CarID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countrys">
+            <EntityTypeMapping TypeName="AutoSphereBDModel.Countrys">
+              <MappingFragment StoreEntitySet="Countrys">
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Drives">
+            <EntityTypeMapping TypeName="AutoSphereBDModel.Drives">
+              <MappingFragment StoreEntitySet="Drives">
+                <ScalarProperty Name="DriveName" ColumnName="DriveName" />
+                <ScalarProperty Name="DriveID" ColumnName="DriveID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EnterHistory">
+            <EntityTypeMapping TypeName="AutoSphereBDModel.EnterHistory">
+              <MappingFragment StoreEntitySet="EnterHistory">
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="EnterID" ColumnName="EnterID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Marks">
+            <EntityTypeMapping TypeName="AutoSphereBDModel.Marks">
+              <MappingFragment StoreEntitySet="Marks">
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="MarkName" ColumnName="MarkName" />
+                <ScalarProperty Name="MarkID" ColumnName="MarkID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="AutoSphereBDModel.Orders">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="Sum" ColumnName="Sum" />
+                <ScalarProperty Name="ServID" ColumnName="ServID" />
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+                <ScalarProperty Name="StuffID" ColumnName="StuffID" />
+                <ScalarProperty Name="DateOfOrder" ColumnName="DateOfOrder" />
+                <ScalarProperty Name="Garanty" ColumnName="Garanty" />
+                <ScalarProperty Name="CarID" ColumnName="CarID" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Services">
+            <EntityTypeMapping TypeName="AutoSphereBDModel.Services">
+              <MappingFragment StoreEntitySet="Services">
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ServName" ColumnName="ServName" />
+                <ScalarProperty Name="ServID" ColumnName="ServID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stuff">
+            <EntityTypeMapping TypeName="AutoSphereBDModel.Stuff">
+              <MappingFragment StoreEntitySet="Stuff">
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="ZoneID" ColumnName="ZoneID" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="StaffID" ColumnName="StaffID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Zones">
+            <EntityTypeMapping TypeName="AutoSphereBDModel.Zones">
+              <MappingFragment StoreEntitySet="Zones">
+                <ScalarProperty Name="ZoneSize" ColumnName="ZoneSize" />
+                <ScalarProperty Name="ZoneName" ColumnName="ZoneName" />
+                <ScalarProperty Name="ZoneID" ColumnName="ZoneID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TestDrive">
+            <EntityTypeMapping TypeName="AutoSphereBDModel.TestDrive">
+              <MappingFragment StoreEntitySet="TestDrive">
+                <ScalarProperty Name="Serv" ColumnName="Serv" />
+                <ScalarProperty Name="CarID" ColumnName="CarID" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+                <ScalarProperty Name="TestDriveID" ColumnName="TestDriveID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
